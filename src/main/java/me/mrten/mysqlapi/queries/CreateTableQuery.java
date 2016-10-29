@@ -41,11 +41,15 @@ public class CreateTableQuery {
         builder.append(" (");
 
         for (String column : columns) {
-            builder.append(column + ", ");
+            builder.append(column + ",");
+        }
+
+        if (columns.size() > 0) {
+            builder.deleteCharAt(builder.length() - 1);
         }
 
         if (primaryKey != null) {
-            builder.append("PRIMARY KEY(");
+            builder.append(",PRIMARY KEY(");
             builder.append(primaryKey);
             builder.append(")");
         }
