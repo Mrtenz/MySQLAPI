@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-    private HikariDataSource dataSource;
     boolean connected = false;
+    private HikariDataSource dataSource;
     private String host;
     private String port;
     private String username;
@@ -63,10 +63,14 @@ public class ConnectionManager {
     }
 
     public void close() {
-        if (!connected)
+        if (!connected || isClosed())
             throw new IllegalStateException("Connection is not open.");
 
         this.dataSource.close();
+    }
+
+    public boolean isClosed() {
+        return dataSource == null || dataSource.isClosed();
     }
 
 }
