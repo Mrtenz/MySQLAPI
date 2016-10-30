@@ -1,5 +1,7 @@
 package me.mrten.mysqlapi.queries;
 
+import me.mrten.mysqlapi.utils.QueryUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +30,8 @@ public class DeleteQuery {
                 .append(table);
 
         if (wheres.size() > 0) {
-            builder.append(" WHERE ");
-            String and = "";
-            for (String where : wheres) {
-                builder.append(and)
-                        .append(where);
-                and = " AND ";
-            }
+            builder.append(" WHERE ")
+                    .append(QueryUtils.seperate(wheres, " AND "));
         }
 
         return builder.toString();

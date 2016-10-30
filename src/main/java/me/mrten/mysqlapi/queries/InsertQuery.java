@@ -1,5 +1,7 @@
 package me.mrten.mysqlapi.queries;
 
+import me.mrten.mysqlapi.utils.QueryUtils;
+
 import java.util.LinkedHashMap;
 
 public class InsertQuery {
@@ -25,25 +27,12 @@ public class InsertQuery {
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO ")
                 .append(table)
-                .append(" (");
-
-        String seperator = "";
-        for (String key : values.keySet()) {
-            builder.append(seperator)
-                    .append(key);
-            seperator = ",";
-        }
-
-        builder.append(")")
-                .append(" VALUES (");
-        seperator = "";
-        for (String value : values.values()) {
-            builder.append(seperator)
-                    .append(value);
-            seperator = ",";
-        }
-
-        builder.append(")");
+                .append(" (")
+                .append(QueryUtils.seperate(values.keySet(), ","))
+                .append(")")
+                .append(" VALUES (")
+                .append(QueryUtils.seperate(values.values(), ","))
+                .append(")");
 
         return builder.toString();
     }

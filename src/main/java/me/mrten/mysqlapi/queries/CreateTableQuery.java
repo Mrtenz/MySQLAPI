@@ -1,5 +1,7 @@
 package me.mrten.mysqlapi.queries;
 
+import me.mrten.mysqlapi.utils.QueryUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,16 +39,9 @@ public class CreateTableQuery {
             builder.append("IF NOT EXISTS ");
         }
 
-        builder.append(table);
-        builder.append(" (");
-
-        for (String column : columns) {
-            builder.append(column + ",");
-        }
-
-        if (columns.size() > 0) {
-            builder.deleteCharAt(builder.length() - 1);
-        }
+        builder.append(table)
+                .append(" (")
+                .append(QueryUtils.seperate(columns, ","));
 
         if (primaryKey != null) {
             builder.append(",PRIMARY KEY(");

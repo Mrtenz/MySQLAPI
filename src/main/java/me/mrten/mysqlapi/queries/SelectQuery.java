@@ -1,5 +1,7 @@
 package me.mrten.mysqlapi.queries;
 
+import me.mrten.mysqlapi.utils.QueryUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,26 +54,14 @@ public class SelectQuery {
 
     public String build() {
         StringBuilder builder = new StringBuilder();
-        builder.append("SELECT ");
-
-        String seperator = "";
-        for (String column : columns) {
-            builder.append(seperator)
-                    .append(column);
-            seperator = ",";
-        }
-
-        builder.append(" FROM ");
-        builder.append(table);
+        builder.append("SELECT ")
+                .append(QueryUtils.seperate(columns, ","))
+                .append(" FROM ")
+                .append(table);
 
         if (wheres.size() > 0) {
-            builder.append(" WHERE ");
-            String and = "";
-            for (String where : wheres) {
-                builder.append(and)
-                        .append(where);
-                and = " AND ";
-            }
+            builder.append(" WHERE ")
+                    .append(QueryUtils.seperate(wheres, " AND "));
         }
 
         if (orderBy != null) {
