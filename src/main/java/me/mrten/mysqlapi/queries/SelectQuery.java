@@ -96,13 +96,13 @@ public class SelectQuery {
     public String build() {
         StringBuilder builder = new StringBuilder();
         builder.append("SELECT ")
-                .append(QueryUtils.seperate(columns, ","))
+                .append(QueryUtils.separate(columns, ","))
                 .append(" FROM ")
                 .append(table);
 
         if (wheres.size() > 0) {
             builder.append(" WHERE ")
-                    .append(QueryUtils.seperate(wheres, " AND "));
+                    .append(QueryUtils.separate(wheres, " AND "));
         }
 
         if (orderBy != null) {

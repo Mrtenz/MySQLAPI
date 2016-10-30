@@ -50,7 +50,7 @@ public class DeleteQuery {
 
         if (wheres.size() > 0) {
             builder.append(" WHERE ")
-                    .append(QueryUtils.seperate(wheres, " AND "));
+                    .append(QueryUtils.separate(wheres, " AND "));
         }
 
         return builder.toString();

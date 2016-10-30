@@ -65,7 +65,7 @@ public class CreateTableQuery {
 
         builder.append(table)
                 .append(" (")
-                .append(QueryUtils.seperate(columns, ","));
+                .append(QueryUtils.separate(columns, ","));
 
         if (primaryKey != null) {
             builder.append(",PRIMARY KEY(");

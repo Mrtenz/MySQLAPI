@@ -48,10 +48,10 @@ public class InsertQuery {
         builder.append("INSERT INTO ")
                 .append(table)
                 .append(" (")
-                .append(QueryUtils.seperate(values.keySet(), ","))
+                .append(QueryUtils.separate(values.keySet(), ","))
                 .append(")")
                 .append(" VALUES (")
-                .append(QueryUtils.seperate(values.values(), ","))
+                .append(QueryUtils.separate(values.values(), ","))
                 .append(")");
 
         return builder.toString();
