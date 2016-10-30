@@ -24,10 +24,11 @@ public class MySQL {
      * @param username - username used to connect to the database
      * @param password - password used to connect to the database
      * @param database - name of the database to connect to
+     * @return TRUE if connection was successful, FALSE if an error occurred
      */
-    public void connect(String host, String port, String username, String password, String database) {
+    public boolean connect(String host, String port, String username, String password, String database) {
         connectionManager = new ConnectionManager(host, port, username, password, database);
-        connectionManager.open();
+        return connectionManager.open();
     }
 
     /**

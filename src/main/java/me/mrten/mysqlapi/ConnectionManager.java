@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-    boolean connected = false;
     private HikariDataSource dataSource;
     private String host;
     private String port;
@@ -39,7 +38,7 @@ public class ConnectionManager {
     }
 
     public Connection getConnection() {
-        if (!connected)
+        if (isClosed())
             throw new IllegalStateException("Connection is not open.");
 
         try {
@@ -50,20 +49,24 @@ public class ConnectionManager {
         return null;
     }
 
-    public void open() {
-        HikariConfig config = new HikariConfig();
-        config.setDriverClassName("com.mysql.jdbc.Driver");
-        config.setUsername(username);
-        config.setPassword(password);
-        config.setJdbcUrl(String.format("jdbc:mysql://%s:%s/%s", host, port, database));
-        config.setConnectionTimeout(connectionTimeout);
-        config.setMaximumPoolSize(maximumPoolsize);
-        this.dataSource = new HikariDataSource(config);
-        this.connected = true;
+    public boolean open() {
+        try {
+            HikariConfig config = new HikariConfig();
+            config.setDriverClassName("com.mysql.jdbc.Driver");
+            config.setUsername(username);
+            config.setPassword(password);
+            config.setJdbcUrl(String.format("jdbc:mysql://%s:%s/%s", host, port, database));
+            config.setConnectionTimeout(connectionTimeout);
+            config.setMaximumPoolSize(maximumPoolsize);
+            this.dataSource = new HikariDataSource(config);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void close() {
-        if (!connected || isClosed())
+        if (isClosed())
             throw new IllegalStateException("Connection is not open.");
 
         this.dataSource.close();
