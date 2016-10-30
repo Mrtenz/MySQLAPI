@@ -3,11 +3,14 @@ package me.mrten.mysqlapi.queries;
 import me.mrten.mysqlapi.utils.QueryUtils;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class InsertQuery {
 
     private String table;
     private LinkedHashMap<String, String> values = new LinkedHashMap<String, String>();
+    private LinkedHashMap<String, String> duplicateValues = new LinkedHashMap<String, String>();
+    private boolean onDuplicateKey = false;
 
     /**
      * Create an insert query.
@@ -40,6 +43,40 @@ public class InsertQuery {
     }
 
     /**
+     * Add on duplicate key update clause.
+     * @return the InsertQuery object
+     */
+    public InsertQuery onDuplicateKeyUpdate() {
+        onDuplicateKey = true;
+        return this;
+    }
+
+    /**
+     * Update a column to value in case of a duplicate key.
+     *
+     * @param column the column to update
+     * @param value  the new value
+     * @return the InsertQuery object
+     */
+    public InsertQuery set(String column, String value) {
+        duplicateValues.put(column, value);
+        return this;
+    }
+
+    /**
+     * Update a column to value in case of a duplicate key.
+     * <p>
+     * Automatically inserts values(column).
+     *
+     * @param column
+     * @return
+     */
+    public InsertQuery set(String column) {
+        set(column, "VALUES(" + column + ")");
+        return this;
+    }
+
+    /**
      * Build the query as a String.
      * @return the query as a String
      */
@@ -53,6 +90,20 @@ public class InsertQuery {
                 .append(" VALUES (")
                 .append(QueryUtils.separate(values.values(), ","))
                 .append(")");
+
+        if (onDuplicateKey) {
+            builder.append(" ON DUPLICATE KEY UPDATE ");
+            String separator = "";
+            for (Map.Entry<String, String> entry : duplicateValues.entrySet()) {
+                String column = entry.getKey();
+                String value = entry.getValue();
+                builder.append(separator)
+                        .append(column)
+                        .append("=")
+                        .append(value);
+                separator = ",";
+            }
+        }
 
         return builder.toString();
     }
