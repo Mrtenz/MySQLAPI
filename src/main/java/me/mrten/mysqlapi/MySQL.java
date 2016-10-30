@@ -27,6 +27,7 @@ public class MySQL {
      */
     public void connect(String host, String port, String username, String password, String database) {
         connectionManager = new ConnectionManager(host, port, username, password, database);
+        connectionManager.open();
     }
 
     /**
