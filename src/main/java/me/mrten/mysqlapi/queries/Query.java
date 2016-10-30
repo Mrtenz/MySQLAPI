@@ -19,6 +19,14 @@ public class Query {
         }
     }
 
+    /**
+     * Set a parameter of the prepared statement.
+     * <p>
+     * Parameters are defined using ? in the SQL query.
+     *
+     * @param index - the index of the parameter to set (starts with 1)
+     * @param value - the value to set the parameter to
+     */
     public void setParameter(int index, Object value) {
         try {
             statement.setObject(index, value);
@@ -27,6 +35,10 @@ public class Query {
         }
     }
 
+    /**
+     * Execute a SQL query that does not return a ResultSet.
+     * @return number of rows changed
+     */
     public int executeUpdate() throws SQLException {
         int rowsChanged = 0;
         try {
@@ -42,6 +54,12 @@ public class Query {
         }
     }
 
+    /**
+     * Execute a SQL query that does return a ResultSet.
+     * <p>
+     * Uses a CachedRowSetImpl that is not connected to the database.
+     * @return the ResultSet
+     */
     public ResultSet executeQuery() throws SQLException {
         CachedRowSetImpl rowSet = new CachedRowSetImpl();
         ResultSet resultSet = null;
@@ -64,6 +82,12 @@ public class Query {
         return rowSet;
     }
 
+    /**
+     * Execute a SQL query that does not return a ResultSet asynchronously.
+     * <p>
+     * The query will be run in a seperate thread.
+     * @param callback - the callback to be executed once the query is done
+     */
     public void executeUpdateAsync(final Callback<Integer, SQLException> callback) {
         Thread thread = new Thread(new Runnable() {
 
@@ -87,10 +111,21 @@ public class Query {
         thread.run();
     }
 
+    /**
+     * Execute a SQL query that does not return a ResultSet asynchronously.
+     * <p>
+     * The query will be run in a seperate thread.
+     */
     public void executeUpdateAsync() {
         executeUpdateAsync(null);
     }
 
+    /**
+     * Execute a SQL query that does return a ResultSet asynchronously.
+     * <p>
+     * The query will be run in a seperate thread.
+     * @param callback - the callback to be executed once the query is done
+     */
     public void executeQueryAsync(final Callback<ResultSet, SQLException> callback) {
         Thread thread = new Thread(new Runnable() {
 
