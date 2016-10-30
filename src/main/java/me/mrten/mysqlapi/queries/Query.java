@@ -24,8 +24,8 @@ public class Query {
      * <p>
      * Parameters are defined using ? in the SQL query.
      *
-     * @param index - the index of the parameter to set (starts with 1)
-     * @param value - the value to set the parameter to
+     * @param index the index of the parameter to set (starts with 1)
+     * @param value the value to set the parameter to
      */
     public void setParameter(int index, Object value) {
         try {
@@ -86,7 +86,7 @@ public class Query {
      * Execute a SQL query that does not return a ResultSet asynchronously.
      * <p>
      * The query will be run in a seperate thread.
-     * @param callback - the callback to be executed once the query is done
+     * @param callback the callback to be executed once the query is done
      */
     public void executeUpdateAsync(final Callback<Integer, SQLException> callback) {
         Thread thread = new Thread(new Runnable() {
@@ -124,7 +124,7 @@ public class Query {
      * Execute a SQL query that does return a ResultSet asynchronously.
      * <p>
      * The query will be run in a seperate thread.
-     * @param callback - the callback to be executed once the query is done
+     * @param callback the callback to be executed once the query is done
      */
     public void executeQueryAsync(final Callback<ResultSet, SQLException> callback) {
         Thread thread = new Thread(new Runnable() {

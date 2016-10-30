@@ -15,7 +15,7 @@ public class InsertQuery {
     /**
      * Create an insert query.
      *
-     * @param table - the table to be updated
+     * @param table the table to be updated
      */
     public InsertQuery(String table) {
         this.table = table;
@@ -23,8 +23,8 @@ public class InsertQuery {
 
     /**
      * Set a column to insert to and the value to be inserted.
-     * @param column - the column to insert to
-     * @param value - the value to be inserted
+     * @param column the column to insert to
+     * @param value the value to be inserted
      * @return the InsertQuery object
      */
     public InsertQuery value(String column, String value) {
@@ -34,7 +34,7 @@ public class InsertQuery {
 
     /**
      * Set a column to insert to. Automatically sets the value to ? to be used with prepared statements.
-     * @param column - the column to insert to
+     * @param column the column to insert to
      * @return the InsertQuery object
      */
     public InsertQuery value(String column) {
@@ -55,7 +55,7 @@ public class InsertQuery {
      * Update a column to value in case of a duplicate key.
      *
      * @param column the column to update
-     * @param value  the new value
+     * @param value the new value
      * @return the InsertQuery object
      */
     public InsertQuery set(String column, String value) {

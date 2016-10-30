@@ -18,7 +18,7 @@ public class SelectQuery {
     /**
      * Create a select query.
      *
-     * @param table - the table to be selected from
+     * @param table the table to be selected from
      */
     public SelectQuery(String table) {
         this.table = table;
@@ -26,7 +26,7 @@ public class SelectQuery {
 
     /**
      * Add a column to be selected.
-     * @param column - the column
+     * @param column the column
      * @return the SelectQuery object
      */
     public SelectQuery column(String column) {
@@ -36,7 +36,7 @@ public class SelectQuery {
 
     /**
      * Add a where clause.
-     * @param expression - the expression
+     * @param expression the expression
      * @return the SelectQuery object
      */
     public SelectQuery where(String expression) {
@@ -46,7 +46,7 @@ public class SelectQuery {
 
     /**
      * Add a where clause.
-     * @param expression - the expression
+     * @param expression the expression
      * @return the SelectQuery object
      */
     public SelectQuery and(String expression) {
@@ -56,8 +56,8 @@ public class SelectQuery {
 
     /**
      * Add a order by clause.
-     * @param column - the column to be ordered by
-     * @param ascending - whether it should be ordered ascending or descending
+     * @param column the column to be ordered by
+     * @param ascending whether it should be ordered ascending or descending
      * @return the SelectQuery object
      */
     public SelectQuery orderBy(String column, boolean ascending) {
@@ -68,8 +68,8 @@ public class SelectQuery {
 
     /**
      * Add a limit clause.
-     * @param offset - the offset, starting from 0.
-     * @param rowCount - the number of rows
+     * @param offset the offset, starting from 0.
+     * @param rowCount the number of rows
      * @return the SelectQuery object
      */
     public SelectQuery limit(int offset, int rowCount) {
@@ -80,7 +80,7 @@ public class SelectQuery {
 
     /**
      * Add a limit clause, with a offset of 0.
-     * @param rowCount - the number of rows
+     * @param rowCount the number of rows
      * @return the SelectQuery object
      */
     public SelectQuery limit(int rowCount) {
