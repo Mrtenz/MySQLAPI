@@ -7,10 +7,12 @@ import java.sql.*;
 
 public class Query {
 
+    private MySQL mysql;
     private Connection connection;
     private PreparedStatement statement;
 
     public Query(MySQL mysql, String sql) {
+        this.mysql = mysql;
         connection = mysql.getConnectionManager().getConnection();
         try {
             statement = connection.prepareStatement(sql);
@@ -89,7 +91,7 @@ public class Query {
      * @param callback the callback to be executed once the query is done
      */
     public void executeUpdateAsync(final Callback<Integer, SQLException> callback) {
-        Thread thread = new Thread(new Runnable() {
+        mysql.getThreadPool().submit(new Runnable() {
 
             public void run() {
                 try {
@@ -107,8 +109,6 @@ public class Query {
             }
 
         });
-
-        thread.run();
     }
 
     /**
@@ -127,7 +127,7 @@ public class Query {
      * @param callback the callback to be executed once the query is done
      */
     public void executeQueryAsync(final Callback<ResultSet, SQLException> callback) {
-        Thread thread = new Thread(new Runnable() {
+        mysql.getThreadPool().submit(new Runnable() {
 
             public void run() {
                 try {
@@ -139,8 +139,6 @@ public class Query {
             }
 
         });
-
-        thread.run();
     }
 
 }

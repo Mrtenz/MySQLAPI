@@ -61,6 +61,7 @@ public class ConnectionManager {
             this.dataSource = new HikariDataSource(config);
             return true;
         } catch (Exception e) {
+            System.out.println(e.toString());
             return false;
         }
     }

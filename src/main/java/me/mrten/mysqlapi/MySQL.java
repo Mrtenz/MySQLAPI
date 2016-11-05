@@ -1,11 +1,26 @@
 package me.mrten.mysqlapi;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MySQL {
 
     private ConnectionManager connectionManager;
+    private ExecutorService threadPool;
 
+    /**
+     * Create a new MySQL object with a default of 10 maximum threads.
+     */
     public MySQL() {
+        threadPool = Executors.newFixedThreadPool(10);
+    }
 
+    /**
+     * Create a new MySQL object.
+     * @param maxThreads maximum number of threads to be created
+     */
+    public MySQL(int maxThreads) {
+        threadPool = Executors.newFixedThreadPool(maxThreads);
     }
 
     /**
@@ -15,6 +30,15 @@ public class MySQL {
      */
     public ConnectionManager getConnectionManager() {
         return connectionManager;
+    }
+
+    /**
+     * Get the thread pool.
+     *
+     * @return the thread pool
+     */
+    public ExecutorService getThreadPool() {
+        return threadPool;
     }
 
     /**
@@ -37,5 +61,8 @@ public class MySQL {
     public void disconnect() {
         if (connectionManager != null)
             connectionManager.close();
+
+        if (threadPool != null)
+            threadPool.shutdown();
     }
 }
