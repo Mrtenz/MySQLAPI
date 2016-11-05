@@ -15,7 +15,7 @@ public class CreateTableQuery {
     /**
      * Create a create table query.
      *
-     * @param table - the table to be created
+     * @param table the table to be created
      */
     public CreateTableQuery(String table) {
         this.table = table;
@@ -32,8 +32,8 @@ public class CreateTableQuery {
 
     /**
      * Add a column with settings.
-     * @param column - the column
-     * @param settings - the column settings
+     * @param column the column
+     * @param settings the column settings
      * @return the CreateTableQuery object
      */
     public CreateTableQuery column(String column, String settings) {
@@ -43,7 +43,7 @@ public class CreateTableQuery {
 
     /**
      * Set the primary key to column.
-     * @param column - the column to be the primary key
+     * @param column the column to be the primary key
      * @return the CreateTableQuery object
      */
     public CreateTableQuery primaryKey(String column) {
