@@ -23,6 +23,7 @@ public class CreateTableQuery {
 
     /**
      * Add if not exists to the query.
+     *
      * @return the CreateTableQuery object
      */
     public CreateTableQuery ifNotExists() {
@@ -32,7 +33,8 @@ public class CreateTableQuery {
 
     /**
      * Add a column with settings.
-     * @param column the column
+     *
+     * @param column   the column
      * @param settings the column settings
      * @return the CreateTableQuery object
      */
@@ -43,6 +45,7 @@ public class CreateTableQuery {
 
     /**
      * Set the primary key to column.
+     *
      * @param column the column to be the primary key
      * @return the CreateTableQuery object
      */
@@ -53,6 +56,7 @@ public class CreateTableQuery {
 
     /**
      * Build the query as a String.
+     *
      * @return the query as a String
      */
     public String build() {

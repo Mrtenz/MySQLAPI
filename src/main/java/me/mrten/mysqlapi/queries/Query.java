@@ -39,6 +39,7 @@ public class Query {
 
     /**
      * Execute a SQL query that does not return a ResultSet.
+     *
      * @return number of rows changed
      */
     public int executeUpdate() throws SQLException {
@@ -60,6 +61,7 @@ public class Query {
      * Execute a SQL query that does return a ResultSet.
      * <p>
      * Uses a CachedRowSetImpl that is not connected to the database.
+     *
      * @return the ResultSet
      */
     public ResultSet executeQuery() throws SQLException {
@@ -88,6 +90,7 @@ public class Query {
      * Execute a SQL query that does not return a ResultSet asynchronously.
      * <p>
      * The query will be run in a seperate thread.
+     *
      * @param callback the callback to be executed once the query is done
      */
     public void executeUpdateAsync(final Callback<Integer, SQLException> callback) {
@@ -124,6 +127,7 @@ public class Query {
      * Execute a SQL query that does return a ResultSet asynchronously.
      * <p>
      * The query will be run in a seperate thread.
+     *
      * @param callback the callback to be executed once the query is done
      */
     public void executeQueryAsync(final Callback<ResultSet, SQLException> callback) {

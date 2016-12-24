@@ -26,6 +26,7 @@ public class SelectQuery {
 
     /**
      * Add a column to be selected.
+     *
      * @param column the column
      * @return the SelectQuery object
      */
@@ -36,6 +37,7 @@ public class SelectQuery {
 
     /**
      * Add a where clause.
+     *
      * @param expression the expression
      * @return the SelectQuery object
      */
@@ -46,6 +48,7 @@ public class SelectQuery {
 
     /**
      * Add a where clause.
+     *
      * @param expression the expression
      * @return the SelectQuery object
      */
@@ -56,7 +59,8 @@ public class SelectQuery {
 
     /**
      * Add a order by clause.
-     * @param column the column to be ordered by
+     *
+     * @param column    the column to be ordered by
      * @param ascending whether it should be ordered ascending or descending
      * @return the SelectQuery object
      */
@@ -68,7 +72,8 @@ public class SelectQuery {
 
     /**
      * Add a limit clause.
-     * @param offset the offset, starting from 0.
+     *
+     * @param offset   the offset, starting from 0.
      * @param rowCount the number of rows
      * @return the SelectQuery object
      */
@@ -80,6 +85,7 @@ public class SelectQuery {
 
     /**
      * Add a limit clause, with a offset of 0.
+     *
      * @param rowCount the number of rows
      * @return the SelectQuery object
      */
@@ -91,6 +97,7 @@ public class SelectQuery {
 
     /**
      * Build the query as a String.
+     *
      * @return the query as a String
      */
     public String build() {

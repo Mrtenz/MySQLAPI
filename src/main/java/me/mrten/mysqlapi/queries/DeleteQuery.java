@@ -21,6 +21,7 @@ public class DeleteQuery {
 
     /**
      * Add a where clause.
+     *
      * @param expression the expression
      * @return the DeleteQuery object
      */
@@ -31,6 +32,7 @@ public class DeleteQuery {
 
     /**
      * Add a where clause.
+     *
      * @param expression the expression
      * @return the DeleteQuery object
      */
@@ -41,6 +43,7 @@ public class DeleteQuery {
 
     /**
      * Build the query as a String.
+     *
      * @return the query as a String
      */
     public String build() {

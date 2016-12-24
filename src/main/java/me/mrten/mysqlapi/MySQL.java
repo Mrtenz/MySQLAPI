@@ -17,6 +17,7 @@ public class MySQL {
 
     /**
      * Create a new MySQL object.
+     *
      * @param maxThreads maximum number of threads to be created
      */
     public MySQL(int maxThreads) {
@@ -43,8 +44,9 @@ public class MySQL {
 
     /**
      * Connect to a MySQL database.
-     * @param host the host for connecting to the database
-     * @param port the port (by default 3306)
+     *
+     * @param host     the host for connecting to the database
+     * @param port     the port (by default 3306)
      * @param username username used to connect to the database
      * @param password password used to connect to the database
      * @param database name of the database to connect to
