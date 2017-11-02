@@ -11,13 +11,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>mrten-snapshots</id>
-            <name>Mrten's Repo</name>
-            <url>http://repo.mrten.nl/content/repositories/snapshots/</url>
+            <url>https://repo.mrten.nl/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>mrten-releases</id>
-            <name>Mrten's Release Repo</name>
-            <url>http://repo.mrten.nl/content/repositories/releases/</url>
+            <url>https://repo.mrten.nl/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
@@ -102,7 +100,7 @@
                 </executions>
                 <configuration>
                     <serverId>mrten-repo</serverId>
-                    <nexusUrl>http://repo.mrten.nl/</nexusUrl>
+                    <nexusUrl>https://repo.mrten.nl/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>
