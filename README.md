@@ -15,7 +15,7 @@ And add the following to dependencies:
         <dependency>
             <groupId>me.mrten</groupId>
             <artifactId>MySQLAPI</artifactId>
-            <version>VERSION</version>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
 ```
 Either shade the library into your own plugin, or add the library to your server's plugins folder. If you don't want to shade, make sure you put ```depend: [MySQLAPI]``` in your plugin.yml.
